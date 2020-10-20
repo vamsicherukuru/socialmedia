@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+
+
+
+<style>
+    .jumbotron{
+     background-color: white;
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-attachment: fixed;
+        background-position: center;
+        
+    
+      }
+     
+
+        input{
+           
+            width: 400px;
+            border-radius: 2px;
+            height: 40px;
+        }
+        textarea{
+            width: 400px;
+            border-radius: 2px;
+            height: 60px;
+    
+        }
+  
+    
+    
+</style>
+
+
+
+
+<div class="container">
+    <div class="jumbotron">
+       <center>
+
+        <h1>Comment Section</h1>
+        <form method="POST" >
+            {% csrf_token %}
+           
+                {{form.as_p}}
+                <button type="submit" class="btn btn-success">Comment</button>
+            
+            </form>
+       </center>
+
+    </div>
+</div>
+
+{% endblock %}

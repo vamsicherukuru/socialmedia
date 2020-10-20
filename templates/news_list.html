@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+
+    {% block body_block %}
+
+<style>
+  h3:hover{
+    text-decoration: underline;
+  }
+</style>
+
+    <div class="container">
+     
+      
+<h1 style="color: whitesmoke;">  News Blog</h1>
+
+{% if user.is_staff %}
+
+
+<a type="button" href="{% url 'blog:newsPost' %}" class="btn btn-dark">create a Post</a>
+
+{% endif %}
+
+
+
+<br>
+
+
+<table class="table table-light">
+    <thead>
+      <tr >
+       
+       
+
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for post in news_list %}
+
+       
+      <tr>
+       
+       
+        
+        <td><a href="{% url 'blog:news_detail' pk=post.pk %}"><h3 style="color: black;">
+          {{post.Title}}
+        </h3></a>
+        <br>
+        Published on:
+        {{post.post_date}}
+        </td>
+        <td><img src="{{post.photo.url}}" alt="" width="300px;"></td>
+      </tr>
+      
+      {% endfor %}
+    
+    </tbody>
+  </table>
+
+
+
+
+
+</div>
+{% endblock %}
+
+
+
+
+

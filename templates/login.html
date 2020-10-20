@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+
+
+
+<form method="POST" action="{% url 'blog:user_login' %}">
+
+    {% csrf_token %}
+
+<br>
+    <input type="text" name="username" id="">
+<br>
+    <input type="password" name="password" id="">
+    <br>
+    <input type="submit" name="" id="">
+
+</form>
+
+
+{% endblock %}

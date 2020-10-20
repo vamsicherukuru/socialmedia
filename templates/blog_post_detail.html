@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+
+
+
+<div class="container col-lg-12 col-sm-6">
+
+    <div class="container" style="background-color: white; padding:20px;">
+
+        <h3>{{post_detail.Title}}</h3>
+        
+        <p> Post #: {{post_detail.id}}
+            Published on: {{post_detail.post_date}} by <span style="font-weight: bold;">{{post_detail.author}}</span>
+        </p><hr>
+        
+       
+    
+    
+    
+</center>
+<p>{{post_detail.Description|safe}}</p>
+
+     
+        
+        
+
+        
+
+            
+            <hr>
+
+
+           
+<br><br>
+            <h3 style="font-family:Dekar;">Comments...</h3>
+           
+
+       
+
+        
+
+            
+                <a type="button"  href="{% url 'blog:makeComment' pk=post_detail.pk %}" class="btn btn-success">Add Comment</a>
+                <br><br><p style="color: black; "> Total comments: 
+                    
+                    <span style=" font-family:Dekar;color:black">
+                        {{post_detail.blogcomments.count}}
+                    </span>
+                    </p>
+                
+                    {% for comment in post_detail.blogcomments.all %}
+                    
+                    
+                       
+                           
+                         
+                               
+                                <p style="font-weight:bold;">
+                                    <img src="{% static 'images/account.svg' %}" style="width: 50px;" alt="">
+                                    {{comment.commentor_name}}
+                                     <span style="font-size: 10px;">{{comment.comment_date}}</span>
+                                </p>
+                               
+                                <p style="margin-left: 50px;">
+                                    
+                                    {{comment.comment_text|safe}}</p>
+                                    <hr>
+                                  
+                                    
+
+                                
+                          
+
+                        
+                  
+
+                    {% endfor %}
+              
+            
+
+        </div>
+       
+    </div>
+
+</div>
+
+{% endblock %}

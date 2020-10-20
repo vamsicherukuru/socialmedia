@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body_block %}
+<style>
+    input{
+        width: 600px;
+        height: 40px;
+    }
+</style>
+
+
+<div class="container" style="background-color: white;">
+    
+
+    <form method="POST">
+
+        {% csrf_token %}
+        <br><br>
+
+        {{form.media}}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-dark">Post</button>
+
+    </form>
+
+
+</div>
+
+{% endblock %}

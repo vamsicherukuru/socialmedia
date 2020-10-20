@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body_block %}
+
+<script>
+    function deleteAck(){
+        document.getElementById("deleteProceed").innerHTML = "Deleted Successfully";
+        alert('Post will be deleted?');
+
+    }
+</script>
+
+<div class="container">
+    
+<div class="jumbotron">
+
+    <h1 id="deleteProceed">Delete {{post.Title}} ??</h1>
+<form method="POST">
+
+    {% csrf_token %}
+    <button type="submit" onclick="deleteAck()" class="btn btn-danger" >Delete</button>
+    <a href="{% url 'ls:astroblog' %}"  class="btn btn-success">Cancel</a>
+</form>
+</div>
+
+</div>
+{% endblock %}

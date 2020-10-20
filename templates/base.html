@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body> <div>
+    <style>
+      footer{
+        background-image: url("{% static 'images/blogFooter.jpg' %}");
+    }
+        li{
+            
+            font-size:20px;
+        }
+    </style>
+
+   
+   <div style="margin-left: 20px;">
+    <a type='button'  class="navbar-brand" href="{% url 'blog:home' %}"><h1 style="color: black;">
+    
+        
+        <img src="{% static 'images/clapperboard.png' %}" alt="Not Found">
+        Movie Corner
+  
+    </h1>
+</a>
+
+<div style="float: right; padding:10px; padding-right:50px; " >
+ 
+
+
+    {% if user.is_authenticated %}
+
+    
+    
+   
+    <a type='button'  class="navbar-brand" href="{% url 'blog:profile' %}">
+      <h6 style="color: black;">
+        <img src="{{user.userprofile.profilePic.url}}" width="30px;" height="30px;" style="border-radius: 50%;" alt="">
+        {{user.username}}
+    </h6>
+</a>
+    <a type='button'  class="navbar-brand" href="{% url 'blog:logout' %}">
+      <h6 style="color: black;">
+    
+     
+      Logout
+  
+    </h6>
+</a>
+
+
+
+     
+    {% else %}
+    <a type='button'  class="navbar-brand" href="{% url 'blog:register' %}"><h6 style="color: black;">
+    
+    
+      Sign up
+    
+    </h6>
+    </a>
+    <a type='button'  class="navbar-brand" href="{% url 'blog:user_login' %}"><h6 style="color: black;">
+    
+        <span></span>
+        
+  Login
+  
+    </h6>
+</a>
+
+   
+
+    {% endif %}
+</div>
+   </div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+  
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'blog:home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+      
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog:astroblog' %}">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog:news' %}">News</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+         {% if user.is_staff %}
+         <li class="nav-item ">
+            
+          <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+      
+    </li>
+    {% endif %}
+        
+      </ul>
+      <form class="form-inline my-2 my-lg-0" onclick="alert('Search feature not available')">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+        onclick="alert('Search feature not available');"
+        >Search</button>
+      </form>
+    
+  </nav>
+
+
+
+    
+
+
+
+    
+    
+    
+    {% block body_block %}
+
+
+
+    {% endblock %}
+
+</div>
+
+<footer style="height: 400px;">
+  <div id="contactInfo" >
+
+
+    <div class="container" style=" padding-bottom:80px;">
+
+       <center>
+        <table style="color: white;">
+            <thead >
+              
+                <tr>
+                    
+                        <th style="width: 200px; padding-top:50px;">SERVICE</th>
+                        <th style="width: 200px; padding-top:50px;">SOCIAL MEDIA</th>
+                        <th style="width: 200px; padding-top:50px;">DEVELOPMENT</th>
+                   
+                    
+                </tr>
+           
+            </thead>
+            <tbody>
+                <tr>
+                    <td>News</td>
+                    <td>Facebook</td>
+                    <td id='about'>VAMSI CHERUKURU</td>
+
+                </tr>
+                <tr>
+                    <td>Technology</td>
+                    <td>Instagram</td>
+                    <td >
+                       
+<b> CONTACT INFO</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Movie Updates</td>
+                    <td></td>
+                    <td>parallax.space@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Blogs</td>
+                </tr>
+            </tbody>
+        </table>
+       </center>
+    </div>
+
+        
+
+   
+
+
+</div>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+<style>
+    #pp{
+        border-radius: 100%;
+    }
+    hr{
+        width: 200px;
+    }
+  
+</style>
+
+
+<center>
+
+    <div class="container">
+    
+     
+        
+       <div id="probod">
+        <img src="{{user.userprofile.profilePic.url}}" width="150px;" height="150px;" id="pp" alt="">
+        <hr>
+        <h1 >{{user.username}}</h1>
+        <h2>{{user.userprofile.Bio}}</h2>
+        
+       </div>
+
+
+    </div>
+</center>
+
+{% endblock %}
